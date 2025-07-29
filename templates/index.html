@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb New User Booking</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 80%;
+            overflow: auto;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Airbnb New User Booking</h1>
+    <h2>Sample Data</h2>
+    <pre>{{ row }}</pre>
+    <h2>Predicted Destination</h2>
+    <p>{{ label }}</p>
+    <button onclick="refreshData()">Get Another Prediction</button>
+
+    <script>
+        async function refreshData() {
+            const response = await fetch('/refresh');
+            const newPage = await response.text();
+            document.open();
+            document.write(newPage);
+            document.close();
+        }
+    </script>
+</body>
+</html>
